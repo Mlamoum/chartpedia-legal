@@ -18,19 +18,19 @@ running them through Jekyll.
 
 Source of truth for edits: `/home/loma/chartpedia/docs/` on the VPS.
 
-## ⚠️ Contact address is a placeholder
+## Contact address
 
-`contact@chartpediaofficial.com` is a **placeholder**. Replace it with the real
-Chartpedia Gmail (the account used for the YouTube channel and TikTok signup)
-before these URLs are submitted to any platform review.
+`chartpediaofficial@gmail.com` — the Chartpedia channel account, used for the
+YouTube channel and TikTok signup. It appears in `terms.html`, `privacy.html`
+and `index.html`.
 
-It appears in three files: `terms.html`, `privacy.html`, `index.html`.
+To change it later:
 
 ```bash
 cd /home/loma/chartpedia
-NEW="the.real@gmail.com"
-sed -i "s/contact@chartpediaofficial\.com/$NEW/g" \
-    docs/terms.html docs/privacy.html \
+NEW="new@address"
+OLD="chartpediaofficial@gmail.com"
+sed -i "s/$OLD/$NEW/g" docs/terms.html docs/privacy.html \
     chartpedia-legal/{terms.html,privacy.html,index.html,README.md}
-cd chartpedia-legal && git commit -aqm "Set real contact address" && ./publish.sh
+cd chartpedia-legal && git commit -aqm "Update contact address" && ./publish.sh
 ```
