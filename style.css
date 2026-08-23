@@ -1,0 +1,163 @@
+/* Chartpedia — shared site styles. No build step, no external dependencies. */
+:root {
+  --accent: #00B4D8;
+  --accent-dark: #0086a3;
+  --ink: #1a1a1a;
+  --muted: #5a6472;
+  --rule: #e3e8ee;
+  --tint: #f2fbfd;
+  --page: #ffffff;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--page);
+  line-height: 1.65;
+  margin: 0;
+  padding: 0;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+.wrap--narrow { max-width: 760px; }
+
+/* ---- header / nav ---- */
+.site-head {
+  border-bottom: 1px solid var(--rule);
+  background: var(--page);
+}
+.site-head .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 26px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.3px;
+  margin-right: auto;
+}
+.site-head nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 15px;
+}
+.site-head nav a + a { margin-left: 20px; }
+.site-head nav a:hover, .site-head nav a[aria-current="page"] { color: var(--accent); }
+
+/* ---- hero ---- */
+.hero { padding: 54px 0 10px; }
+.hero h1 {
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  letter-spacing: -0.6px;
+}
+.hero p.lede { font-size: 19px; color: var(--muted); margin: 0 0 26px; max-width: 42em; }
+
+/* ---- generic type ---- */
+h2 {
+  color: var(--accent);
+  font-size: 21px;
+  margin: 42px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--rule);
+}
+h3 { font-size: 17px; margin: 26px 0 6px; }
+p, li { font-size: 16px; }
+ul { padding-left: 22px; }
+li { margin-bottom: 8px; }
+a { color: var(--accent-dark); }
+.updated { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+.brand { font-weight: bold; color: var(--accent); }
+.callout {
+  background: var(--tint);
+  border-left: 4px solid var(--accent);
+  padding: 14px 18px;
+  margin: 18px 0;
+}
+
+/* ---- buttons ---- */
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 8px; }
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid var(--accent);
+  color: var(--accent-dark);
+  background: var(--page);
+}
+.btn--solid { background: var(--accent); color: #fff; }
+.btn:hover { background: var(--tint); color: var(--accent-dark); }
+.btn--solid:hover { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
+
+/* ---- video grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.card {
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--page);
+}
+.card:hover { border-color: var(--accent); background: var(--tint); }
+.card img { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; background: var(--rule); }
+.card .body { padding: 12px 14px 14px; }
+.card .meta { color: var(--muted); font-size: 13px; margin: 0 0 4px; text-transform: uppercase; letter-spacing: 0.4px; }
+.card .title { font-size: 15px; font-weight: bold; margin: 0 0 6px; line-height: 1.35; }
+.card .blurb { font-size: 14px; color: var(--muted); margin: 0; }
+
+/* ---- steps ---- */
+.steps { counter-reset: step; padding-left: 0; list-style: none; }
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 42px;
+  margin-bottom: 16px;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 1px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---- footer ---- */
+.site-foot {
+  margin-top: 56px;
+  border-top: 1px solid var(--rule);
+  background: var(--tint);
+}
+.site-foot .wrap { padding-top: 26px; padding-bottom: 34px; }
+.site-foot p { color: var(--muted); font-size: 14px; margin: 0 0 6px; }
+.site-foot a { color: var(--accent-dark); }
+.site-foot .links a + a { margin-left: 16px; }
+
+@media (max-width: 560px) {
+  .hero h1 { font-size: 31px; }
+  .hero { padding-top: 36px; }
+}

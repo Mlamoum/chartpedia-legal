@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mlamoum.github.io/chartpedia-legal/sitemap.xml

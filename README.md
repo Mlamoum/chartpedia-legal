@@ -1,36 +1,51 @@
 # chartpedia-legal
 
-Public Terms of Service and Privacy Policy for **Chartpedia**
-(@ChartpediaOfficial), hosted on GitHub Pages.
-
-These pages exist so platform developer programmes (TikTok, YouTube) have a
-stable public URL to point at during app registration and review.
+The public website for **Chartpedia** (@ChartpediaOfficial), hosted on GitHub
+Pages. It is a real, multi-page site — homepage, video list, and two separate
+legal documents — not a policy stub. Platform developer programmes (TikTok,
+YouTube, Meta) point at these URLs during app registration and review.
 
 | Page | URL |
 |---|---|
-| Landing | https://mlamoum.github.io/chartpedia-legal/ |
-| Terms of Service | https://mlamoum.github.io/chartpedia-legal/terms.html |
-| Privacy Policy | https://mlamoum.github.io/chartpedia-legal/privacy.html |
+| Home | https://mlamoum.github.io/chartpedia-legal/ |
+| Videos | https://mlamoum.github.io/chartpedia-legal/videos.html |
+| Terms of Service | https://mlamoum.github.io/chartpedia-legal/terms-of-service.html |
+| Privacy Policy | https://mlamoum.github.io/chartpedia-legal/privacy-policy.html |
 
-Static HTML, no build step. Edit the files and push; Pages redeploys in about a
-minute. `.nojekyll` is present so GitHub serves the files as-is rather than
-running them through Jekyll.
+The homepage `<title>` is exactly `Chartpedia` — it must stay that way, because
+TikTok's app review requires the website title to match the app name exactly.
+Terms of Service and Privacy Policy are two genuinely distinct documents at two
+distinct URLs; never point both app-settings fields at the same file.
 
-Source of truth for edits: `/home/loma/chartpedia/docs/` on the VPS.
+## Legacy URLs — do not delete
+
+`terms.html` and `privacy.html` are the **OAuth redirect_uri** registered for
+both TikTok (`scripts/tiktok_auth.py`) and Instagram
+(`scripts/instagram_auth.py`). They must keep returning HTTP 200 and must
+**not** be turned into redirects — the auth flow depends on the browser landing
+there with `?code=…` still in the address bar. They carry a `rel=canonical`
+pointing at the new filenames and a short "this page has moved" line; that is
+all the change they should ever get.
+
+## Files
+
+Static HTML, no build step. `style.css` is shared by every page. Edit and push;
+Pages redeploys in about a minute. `.nojekyll` is present so GitHub serves the
+files as-is rather than running them through Jekyll.
+`tiktokX25QyjpirZdB83jfYzJYeGOErNPrkgPa.txt` is TikTok's domain-verification
+file — do not remove it.
+
+```bash
+cd /home/loma/chartpedia/chartpedia-legal
+git commit -aqm "..." && ./publish.sh
+```
 
 ## Contact address
 
 `chartpediaofficial@gmail.com` — the Chartpedia channel account, used for the
-YouTube channel and TikTok signup. It appears in `terms.html`, `privacy.html`
-and `index.html`.
-
-To change it later:
+YouTube channel and TikTok signup. To change it:
 
 ```bash
-cd /home/loma/chartpedia
-NEW="new@address"
-OLD="chartpediaofficial@gmail.com"
-sed -i "s/$OLD/$NEW/g" docs/terms.html docs/privacy.html \
-    chartpedia-legal/{terms.html,privacy.html,index.html,README.md}
-cd chartpedia-legal && git commit -aqm "Update contact address" && ./publish.sh
+cd /home/loma/chartpedia/chartpedia-legal
+sed -i "s/chartpediaofficial@gmail.com/new@address/g" *.html README.md
 ```
