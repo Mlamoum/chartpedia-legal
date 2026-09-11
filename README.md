@@ -40,6 +40,33 @@ cd /home/loma/chartpedia/chartpedia-legal
 git commit -aqm "..." && ./publish.sh
 ```
 
+## App icon — must match TikTok exactly
+
+TikTok app review rejects this site if the icon submitted in **Basic Info** is
+not the icon shown on the website and in the browser tab. `assets/app-icon.png`
+is the authoritative copy, pulled unmodified from the live
+[@chartpediaofficial](https://www.tiktok.com/@chartpediaofficial) profile
+avatar (800x800, circular black disc, "CHARTPEDIA" arced above an outlined open
+book with a cyan rising arrow, "OFFICIAL" arced below).
+
+Everything else is a pure LANCZOS downscale of that one file — no recolour, no
+crop, no redraw:
+
+| File | Size | Used by |
+|---|---|---|
+| `assets/app-icon.png` | 800x800 | source of truth, not referenced by any page |
+| `assets/chartpedia-logo-512.png` | 512x512 | visible header logo on every page |
+| `apple-touch-icon.png` | 180x180 | iOS home screen |
+| `favicon-32x32.png` | 32x32 | browser tab |
+| `favicon-16x16.png` | 16x16 | browser tab |
+| `favicon.ico` | 16/32/48 | browser tab fallback |
+
+If the brand mark ever changes, re-cut **all six** from the new master and
+re-upload the same master to TikTok Basic Info in the same session. Note that
+`/home/loma/chartpedia/assets/chartpedia_icon_1024.png` in the main repo is an
+older, *different* icon (filled white book, cyan ring, no text) — do not use it
+here.
+
 ## Contact address
 
 `chartpediaofficial@gmail.com` — the Chartpedia channel account, used for the

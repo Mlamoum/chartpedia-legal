@@ -29,7 +29,7 @@ body {
 .site-head .wrap {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: 6px 26px;
   padding-top: 18px;
   padding-bottom: 18px;
@@ -41,6 +41,18 @@ body {
   text-decoration: none;
   letter-spacing: -0.3px;
   margin-right: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+/* The Chartpedia app icon. Must stay pixel-identical to the icon submitted in
+   TikTok Basic Info and shown on the @chartpediaofficial profile — TikTok app
+   review rejects the site when the two differ. Source: assets/app-icon.png. */
+.logo-mark {
+  width: 48px;
+  height: 48px;
+  display: block;
+  border-radius: 50%;
 }
 .site-head nav a {
   color: var(--muted);
